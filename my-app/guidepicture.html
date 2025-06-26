@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能导诊 - 奔向五一医院</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        .title {
+      text-align: center;
+      background: #f0f0f0;
+    }
+    .person-container {
+      position: relative; /* 父容器设为相对定位 */
+      width: 200px;       /* 设置容器宽度 */
+      height: 300px;      /* 设置容器高度 */
+      margin: 50px auto;  /* 居中容器 */
+    }
+
+    .button {
+      position: absolute; /* 按钮设为绝对定位 */
+      background-color: #3498db; /* 按钮背景色 */
+      border: none;       /* 移除边框 */
+      cursor: pointer;    /* 鼠标悬停时显示指针 */
+    }
+
+    /* 头部 */
+    #head {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%); /* 水平居中 */
+      width: 40px;        /* 按钮宽度 */
+      height: 40px;       /* 按钮高度 */
+      border-radius: 50%; /* 圆形按钮 */
+    }
+
+    /* 身体 */
+    #body-top {
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%); /* 水平居中 */
+      width: 60px;
+      height: 20px;
+    }
+
+    #body-middle {
+      top: 75px;
+      left: 50%;
+      transform: translateX(-50%); /* 水平居中 */
+      width: 60px;
+      height: 20px;
+    }
+
+    #body-bottom {
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%); /* 水平居中 */
+      width: 60px;
+      height: 20px;
+    }
+
+    /* 左臂 */
+    #left-arm {
+      top: 70px;
+      left: 22%;
+      width: 20px;
+      height: 60px;
+    }
+
+    /* 右臂 */
+    #right-arm {
+      top: 70px;
+      left: 68%;
+      width: 20px;
+      height: 60px;
+    }
+
+    /* 左腿 */
+    #left-leg {
+      top: 130px;
+      left: 38%;
+      width: 20px;
+      height: 60px;
+    }
+
+    /* 右腿 */
+    #right-leg {
+      top: 130px;
+      left: 52%;
+      width: 20px;
+      height: 60px;
+    }
+    </style>
+
+   </head>
+
+<body>
+    <header>
+        <h1>智能症状分诊系统</h1>
+        <a href="index.html" class="return-btn">返回首页</a>
+    </header>
+   <h1 class="title">请您点击下图中不适的部位<h1>
+    <div class="person-container">
+      <button id="head" class="button"><a href="guide1.html">头</a></button>
+      <button id="body-top" class="button"><a href="guide2.html">胸部</a></button>
+      <button id="body-middle" class="button"><a href="guide2.html">腹部</a></button>
+      <button id="body-bottom" class="button"><a href="guide2.html">生殖系统</a></button>
+      <button id="left-arm" class="button"><a href="guide2.html">左臂</a></button>
+      <button id="right-arm" class="button"><a href="guide2.html">右臂</a></button>
+      <button id="left-leg" class="button"><a href="guide2.html">左腿</a></button>
+      <button id="right-leg" class="button"><a href="guide2.html">右腿</a></button>
+    </div>
+</body>
+</html>

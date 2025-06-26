@@ -1,0 +1,757 @@
+/* style.css */
+/* 通用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+/* 全局背景设置 */
+body {
+    background: white !important; /* 强制全局白色背景 */
+}
+
+/* 头部样式 */
+header {
+    background-color: #0072c6;
+    color: white;
+    padding: 10px 20px; /* Adjusted padding */
+    /* text-align: center; */ /* Removed or adjusted as header is now flex */
+    position: relative; /* Keep if needed for absolute children, otherwise consider removing */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex; /* Ensure header is a flex container */
+    justify-content: space-between; /* Space out title and buttons */
+    align-items: center; /* Vertically center items */
+}
+
+/* 登录按钮样式 */
+.login-btn {
+    /* Removed absolute positioning */
+    /* position: absolute; */
+    /* right: 20px; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.1);
+    /* Ensure this is an inline-flex or similar if needed */
+    display: inline-flex; 
+    align-items: center;
+    gap: 5px; /* Add a small gap if button has internal elements */
+}
+
+.login-btn:hover {
+    background: rgba(255,255,255,0.2);
+    /* transform: translateY(-50%) scale(1.05); */ /* Removed conflicting transform */
+    transform: scale(1.05); /* Apply scale without translateY */
+}
+
+/* Header buttons container */
+.header-buttons {
+    /* Removed absolute positioning */
+    /* position: absolute; */
+    /* right: 20px; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    display: flex;
+    gap: 15px; /* Spacing between buttons */
+    align-items: center;
+}
+
+/* 医院图片区域 */
+.hospital-image {
+    height: 33vh;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid #0072c6;
+    background: #f0f8ff;
+}
+
+/* Slider container styles */
+.hospital-image-slider {
+    height: 33vh;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid #0072c6;
+    background: #f0f8ff;
+}
+
+/* Slider image styles */
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Slider button styles */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 24px;
+}
+
+.slider-button.prev {
+    left: 10px;
+}
+
+.slider-button.next {
+    right: 10px;
+}
+
+.hospital-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.hospital-image:hover img {
+    transform: scale(1.03);
+}
+
+/* 图片加载失败提示 */
+.hospital-image::after {
+    content: "图片加载失败，请联系管理员";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff4444;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: none;
+    text-align: center;
+    max-width: 80%;
+    z-index: 2;
+}
+
+/* 智能导诊区域 */
+.guide-section {
+    padding: 30px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #f8fbff, #e6f3ff);
+}
+
+.guide-dialog {
+    display: inline-flex;
+    align-items: center;
+    background: #0072c6;
+    color: white;
+    padding: 18px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,114,198,0.3);
+    transition: all 0.3s;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.guide-dialog::after {
+    content: '▶';
+    font-size: 0.9em;
+    transition: transform 0.3s;
+}
+
+.guide-dialog:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,114,198,0.4);
+}
+
+.guide-dialog:hover::after {
+    transform: translateX(3px);
+}
+
+/* 主体内容区域 */
+.main-content {
+    display: flex;
+    padding: 30px 20px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 20px auto; /* 调整外边距 */
+    background: white; /* 改为纯白 */
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* 添加柔和阴影保持层次 */
+}
+/* 挂号区域 */
+.registration-section,
+.notice-section {
+    flex: 1;
+    padding: 25px;
+    border-radius: 12px;
+    background: white; /* 纯白背景 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* 微调阴影 */
+}
+
+/* 滚动条样式 */
+.notice-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notice-section::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.notice-section::-webkit-scrollbar-thumb {
+    background: #0072c6;
+    border-radius: 4px;
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 1px;
+    padding: 0 120px 0 20px; /* Adjust padding to make space for buttons */
+}
+
+h2 {
+    color: #0072c6;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.registration-section h2::after,
+.notice-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #0072c6;
+}
+
+h3 {
+    color: #0072c6;
+    padding-bottom: 12px;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+/* 列表样式 */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 12px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+li, li a {
+    color: #0072c6;
+    text-decoration: none;
+}
+
+li::before {
+    content: '•';
+    color: #0072c6;
+    font-weight: bold;
+}
+
+li:hover {
+    background: rgba(240,248,255,0.9);
+    transform: translateX(8px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 10% auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: #777;
+}
+
+.guide-steps {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.step-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.step-indicator.active {
+    background: #0072c6;
+}
+
+.bg-gray-100 {
+    background-color: #f3f4f6;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    h1 {
+        font-size: 1.8rem;
+        padding: 0 0 10px 0;
+    }
+    .login-btn {
+        position: static; /* Override absolute positioning on smaller screens */
+        margin-top: 10px; /* Add space when stacked */
+        transform: none; /* Remove transform */
+    }
+    .hospital-image {
+        height: 25vh;
+    }
+    .guide-dialog {
+        padding: 12px 25px;
+    }
+    .registration-section,
+    .notice-section {
+        padding: 20px;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 20px;
+    }
+}
+
+.loading, .error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #0072c6;
+    margin-top: 20px;
+}
+
+.error {
+    color: #ff4444;
+}
+
+.department-container {
+    padding: 20px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.return-btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.return-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.admin-btn {
+     color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-btn:hover {
+     background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.doctor-card {
+    background: #f8fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.doctor-card h3 {
+    color: #0056b3; /* Darker blue for names */
+    margin-bottom: 10px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.doctor-info {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.register-btn {
+    display: inline-block;
+    background: #28a745; /* Green for register */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.register-btn:hover {
+    background-color: #218838;
+}
+
+.doctor-list {
+    margin-top: 20px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:first-child {
+    background: #007bff; /* Blue for confirm */
+    color: white;
+}
+
+.modal-buttons button:first-child:hover {
+    background: #0056b3;
+}
+
+.modal-buttons button:last-child {
+    background: #dc3545; /* Red for cancel */
+    color: white;
+}
+
+.modal-buttons button:last-child:hover {
+    background: #c82333;
+}
+
+.user-registrations {
+    margin-top: 20px;
+}
+
+.user-registrations ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-registrations li {
+    background: #e9ecef; /* Light grey background */
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    display: flex; /* Use flexbox for list items */
+    flex-direction: column; /* Stack content vertically */
+    gap: 5px; /* Space between lines of info */
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0072c6;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.profile-container {
+    padding: 20px;
+}
+
+.profile-container header {
+     /* Inherits header styles */
+}
+
+.profile-container .user-registrations {
+    margin-top: 30px;
+}
+
+.admin-container {
+    padding: 20px;
+}
+
+.admin-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.input-field::-webkit-input-placeholder {
+    color: #999;
+}
+
+.input-field:-moz-placeholder {
+    color: #999;
+}
+
+.input-field::-moz-placeholder {
+    color: #999;
+}
+
+.input-field:-ms-input-placeholder {
+    color: #999;
+}
+
+.submit-btn, .add-department-btn {
+    display: inline-block;
+    background: #0072c6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover, .add-department-btn:hover {
+    background-color: #0056b3;
+}
+
+.add-department {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.add-department input {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: #dc3545;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Ensure buttons within header-buttons are also flex items */
+.header-buttons .login-btn, 
+.header-buttons .admin-btn, 
+.header-buttons .return-btn {
+    position: static; /* Override absolute positioning */
+    transform: none; /* Remove transform */
+}
+/* 添加网页脚注样式 */
+.site-footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 40px 0 0;
+  margin-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+  padding: 0 15px;
+}
+
+.footer-section h3 {
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.footer-section p, 
+.footer-section li {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.footer-section a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #3498db;
+}
+
+.footer-bottom {
+  background-color: #1a252f;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #95a5a6;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-section {
+    width: 100%;
+  }
+}
